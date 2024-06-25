@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <h2>Login</h2>
+            {% for fm in form %}
+                <div class="form-group">
+                    {{ fm.label_tag }}
+                    {{ fm }}
+                    {% if fm.errors %}
+                        <div class="form-error">
+                            {{ fm.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+{% comment %} 
+    <form action="" method= 'POST' novalidate>
+        {% csrf_token %}
+        {% for fo in form %}
+            {{fo.label_tag}}
+            {{fo}} 
+            {{fo.errors | striptags }}<br> <br>            
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+    {% if messages %}
+        {% for msg in messages %}
+
+        <span class='success'>
+
+            {{msg}}
+        </span>
+
+        {% endfor %}
+
+    {% endif %} {% endcomment %}
